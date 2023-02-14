@@ -1,0 +1,17 @@
+<?php
+
+namespace App\Modules\Pub\Auth\Controllers;
+
+use App\Modules\Pub\Auth\Models\Auth;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
+class AuthController extends Controller
+{
+    public function index()
+    {
+        dd('ki');
+    }
+
+
+}

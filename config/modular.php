@@ -16,8 +16,8 @@ return [
             'User'
         ],
 
-        // 'Pub' => [
-        //     'Auth'
-        // ],
+        'Pub' => [
+            'Auth'
+        ],
     ]
 ];
