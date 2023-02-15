@@ -14,12 +14,16 @@ class LoginController extends Controller
 
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');        
+        $this->middleware('guest')->except('logout');
     }
 
     public function showLoginForm()
     {
         $title = __('Login');
         return view('Pub::Auth.login');
+    }
+
+    public function login(Request $request) {
+       return $request;
     }
 }
