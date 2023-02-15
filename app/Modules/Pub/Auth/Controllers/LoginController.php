@@ -10,5 +10,16 @@ class LoginController extends Controller
 {
     use AuthenticatesUsers;
 
-    protected $redirectTo = "/admin/dashboard"
+    protected $redirectTo = "/admin/dashboard";
+
+    public function __construct()
+    {
+        $this->middleware('guest')->except('logout');        
+    }
+
+    public function showLoginForm()
+    {
+        $title = __('Login');
+        return view('Pub::Auth.login');
+    }
 }
