@@ -23,7 +23,5 @@ class LoginController extends Controller
         return view('Pub::Auth.login');
     }
 
-    public function login(Request $request) {
-       return $request;
-    }
+
 }

@@ -4,7 +4,7 @@
     <div class="content d-flex justify-content-center align-items-center">
 
         <!-- Login form -->
-        <form method="POST" class="login-form" action="{{ route('auths.login_post') }}">
+        <form method="POST" class="login-form" action="{{ route('auths.login.post') }}">
             @csrf
             <div class="card mb-0">
                 <div class="card-body">
