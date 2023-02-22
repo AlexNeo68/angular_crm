@@ -13,7 +13,8 @@ class MenuController extends Controller
    
     public function index()
     {
-        return ResponseService::sendJsonResponse(true, 200, [], [
+
+        return ResponseService::sendJsonResponse(true, 200,[], [
             'menu' => (Menu::frontMenu(Auth::user())->get())->toArray()
         ]);
     }

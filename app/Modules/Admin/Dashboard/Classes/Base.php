@@ -20,6 +20,7 @@ class Base extends Controller
     protected $sidebar;
     protected $vars;
     protected $locale;
+    protected $service;
 
     public function __construct()
     {
@@ -56,19 +57,21 @@ class Base extends Controller
                 }
 
                 if($item->parent == 0) {
-                    $m->add($item->title, $path)->id($item->id)->data('permissions',[]);
+                    $m->add($item->title, $path)->id($item->id)->data('permissions',$this->getPermissions($item));
                 }
                 else {
                     if($m->find($item->parent)) {
-                        $m->find($item->parent)->add($item->title, $path)->id($item->id)->data('permissions',[]);
+                        $m->find($item->parent)->add($item->title, $path)->id($item->id)->data('permissions',$this->getPermissions($item));
                     }
                 }
 
 
             }
         })->filter(function($item) {
-            ///to do
-            return true;
+            if($this->user && $this->user->canDo($item->data('permissions'))) {
+                return true;
+            }
+            return false;
         });
     }
 
@@ -83,5 +86,12 @@ class Base extends Controller
         }
 
         return false;
+    }
+
+    private function getPermissions($item)
+    {
+        return $item->perms->map(function($item) {
+            return $item->alias;
+        })->toArray();
     }
 }
