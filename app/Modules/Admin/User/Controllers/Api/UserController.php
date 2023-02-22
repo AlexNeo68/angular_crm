@@ -26,7 +26,7 @@ class UserController extends Controller
         $users = $this->service->getUsers();
 
         return ResponseService::sendJsonResponse(true, 200,[],[
-           'users' =>  $users->toArray()
+           'items' =>  $users->toArray()
         ]);
     }
 
@@ -43,7 +43,7 @@ class UserController extends Controller
         $user = $this->service->save($request, new User());
 
         return ResponseService::sendJsonResponse(true, 200, [], [
-            'user' =>  $user->toArray()
+            'item' =>  $user->toArray()
         ]);
     }
 
@@ -51,7 +51,7 @@ class UserController extends Controller
     public function show(User $user)
     {
         return ResponseService::sendJsonResponse(true, 200,[],[
-            'user' =>  $user->toArray()
+            'item' =>  $user->toArray()
         ]);
     }
 
@@ -66,7 +66,7 @@ class UserController extends Controller
     {
         $user = $this->service->save($request, $user);
         return ResponseService::sendJsonResponse(true, 200,[],[
-            'user' =>  $user->toArray()
+            'item' =>  $user->toArray()
         ]);
     }
 
@@ -76,7 +76,7 @@ class UserController extends Controller
         $user->update();
 
         return ResponseService::sendJsonResponse(true, 200,[],[
-            'user' =>  $user->toArray()
+            'item' =>  $user->toArray()
         ]);
     }
 
@@ -87,7 +87,7 @@ class UserController extends Controller
         $users = $this->service->getUsers(1);
 
         return ResponseService::sendJsonResponse(true, 200,[],[
-            'users' =>  $users->toArray()
+            'items' =>  $users->toArray()
         ]);
     }
 }
