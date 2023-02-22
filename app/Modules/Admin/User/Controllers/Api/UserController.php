@@ -5,17 +5,28 @@ namespace App\Modules\Admin\User\Controllers\Api;
 use App\Modules\Admin\User\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Modules\Admin\User\Services\UserService;
+use App\Services\Responses\ResponseService;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    private $service;
+
+    public function __construct(UserService $userService)
+    {
+        $this->service = $userService;
+    }
+
     public function index()
     {
-        //
+        $this->authorize('view', new User());
+
+        $users = $this->service->getUsers();
+
+        return ResponseService::sendJsonResponse(true, 200,[],[
+           'users' =>  $users->toArray()
+        ]);
     }
 
     /**

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Modules\Admin\Role\Policies;
+namespace App\Modules\Admin\User\Policies;
 
 use App\Modules\Admin\User\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class RolePolicy
+class UserPolicy
 {
     use HandlesAuthorization;
 
@@ -21,21 +21,21 @@ class RolePolicy
 
     public function view(User $user)
     {
-        return $user->canDo(['SUPER_ADMIN','ROLES_ACCESS']);
+        return $user->canDo(['SUPER_ADMIN','USERS_ACCESS']);
     }
 
     public function create(User $user)
     {
-        return $user->canDo(['SUPER_ADMIN','ROLES_ACCESS']);
+        return $user->canDo(['SUPER_ADMIN','USERS_ACCESS']);
     }
 
     public function edit(User $user)
     {
-        return $user->canDo(['SUPER_ADMIN','ROLES_ACCESS']);
+        return $user->canDo(['SUPER_ADMIN','USERS_ACCESS']);
     }
 
     public function delete(User $user)
     {
-        return $user->canDo(['SUPER_ADMIN','ROLES_ACCESS']);
+        return $user->canDo(['SUPER_ADMIN','USERS_ACCESS']);
     }
 }

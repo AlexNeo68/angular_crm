@@ -17,6 +17,15 @@ class Menu extends Model
         return $this->belongsToMany(Permission::class, 'permission_menu');
     }
 
+    public function savePermissions($perms) {
+        if(!empty($perms)) {
+            $this->perms()->sync($perms);
+        }
+        else {
+            $this->perms()->detach();
+        }
+    }
+
     public function scopeFrontMenu($query, $user)
     {
         return $query->

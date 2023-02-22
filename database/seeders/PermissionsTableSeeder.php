@@ -25,6 +25,18 @@ class PermissionsTableSeeder extends Seeder
                 'title' => 'Create User',
                 'alias' => 'CREATE_USER',
             ],
+            [
+                'title' => 'Super Admin',
+                'alias' => 'SUPER_ADMIN',
+            ],
+            [
+                'title' => 'Roles Access',
+                'alias' => 'ROLE_ACCESS',
+            ],
+            [
+                'title' => 'User Access',
+                'alias' => 'USER_ACCESS',
+            ],
         ]);
     }
 }

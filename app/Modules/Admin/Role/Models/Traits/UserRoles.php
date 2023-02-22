@@ -12,6 +12,15 @@ trait UserRoles
         return $this->belongsToMany(Role::class, 'role_user');
     }
 
+    public function saveRoles($roles) {
+        if(!empty($roles)) {
+            $this->roles()->sync($roles);
+        }
+        else {
+            $this->roles()->detach();
+        }
+    }
+
     public function canDo($alias, $require = false) {
 
         if(is_array($alias)) {
