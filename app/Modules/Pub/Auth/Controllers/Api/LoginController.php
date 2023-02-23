@@ -2,12 +2,11 @@
 
 namespace App\Modules\Pub\Auth\Controllers\Api;
 
-use App\Http\Controllers\Controller;
-use App\Modules\Admin\User\Requests\LoginRequest;
-use App\Services\Responses\ResponseService;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Services\Responses\ResponseService;
+use App\Modules\Pub\Auth\Requests\LoginRequest;
 
 class LoginController extends Controller
 {
