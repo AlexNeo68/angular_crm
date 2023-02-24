@@ -62,4 +62,8 @@ class Lead extends Model
             get()
             ;
     }
+
+    public function statuses() {
+        return $this->belongsToMany(Status::class);
+    }
 }

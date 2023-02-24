@@ -89,7 +89,14 @@ class LeadController extends Controller
      */
     public function update(Request $request, Lead $lead)
     {
-        //
+        
+        $this->authorize('edit', Lead::class);
+
+        $lead = $this->service->update($request, Auth::user(), $lead);
+
+        return ResponseService::sendJsonResponse(true, 200, [],[
+            'item' => $lead
+        ]);
     }
 
     /**
