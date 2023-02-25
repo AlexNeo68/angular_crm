@@ -200,6 +200,8 @@ return [
         App\Services\Localization\LocalizationServiceProvider::class,
 
         Lavary\Menu\ServiceProvider::class,
+        \Maatwebsite\Excel\ExcelServiceProvider::class,
+        \App\Services\Date\Provider\DateCheckServiceProvider::class,
 
     ],
 
@@ -216,6 +218,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         'Menu' => Lavary\Menu\Facade::class,
+        'DateService' => \App\Services\Date\Facade\DateService::class
     ])->toArray(),
 
 ];

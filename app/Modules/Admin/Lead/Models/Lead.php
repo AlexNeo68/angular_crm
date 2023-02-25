@@ -74,7 +74,7 @@ class Lead extends Model
         return $this->
                 with(['statuses','source','unit'])->
                 where('status_id', self::DONE_STATUS)->
-                where('updated_at','<',\DB::raw('DATE_SUB(NOW(), INTERVAL 24 HOUR)'))->
+                where('updated_at','<', DB::raw('DATE_SUB(NOW(), INTERVAL 24 HOUR)'))->
                 orderBy('updated_at','DESC')->
                 paginate(config('settings.pagination'));
     }
