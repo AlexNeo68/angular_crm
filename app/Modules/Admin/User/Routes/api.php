@@ -7,4 +7,6 @@ Route::group(['prefix' => 'users', 'middleware' => []], function () {
     Route::get('/{user}', 'Api\UserController@show')->name('api.users.read');
     Route::put('/{user}', 'Api\UserController@update')->name('api.users.update');
     Route::delete('/{user}', 'Api\UserController@destroy')->name('api.users.delete');
+
+    
 });

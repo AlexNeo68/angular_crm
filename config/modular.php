@@ -13,6 +13,8 @@ return [
 
     'modules' => [
         'Admin' => [
+            'TaskComment',
+            'Task',
             'Analytics',
             'LeadComment',
             'Lead',

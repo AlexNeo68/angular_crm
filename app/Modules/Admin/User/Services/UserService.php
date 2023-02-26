@@ -2,10 +2,11 @@
 
 namespace App\Modules\Admin\User\Services;
 
+use Illuminate\Support\Facades\Hash;
 use App\Modules\Admin\Role\Models\Role;
 use App\Modules\Admin\User\Models\User;
 use App\Modules\Admin\User\Requests\UserRequest;
-use Illuminate\Support\Facades\Hash;
+use App\Modules\Admin\User\Requests\UserRequestWeb;
 
 class UserService
 {
@@ -37,6 +38,26 @@ class UserService
         $user->fill($request->only($user->getFillable()));
 
         $user->password = Hash::make($request->password);
+        $user->status = '1';
+
+        $user->save();
+
+        $role = Role::findOrFail($request->role_id);
+        $user->roles()->sync($role->id);
+
+        $user->rolename = $role->title;
+
+        return $user;
+    }
+
+    public function saveWeb(UserRequestWeb $request, User $user)
+    {
+        $user->fill($request->only($user->getFillable()));
+
+        if($request->password){
+            $user->password = Hash::make($request->password);
+        }
+
         $user->status = '1';
 
         $user->save();
