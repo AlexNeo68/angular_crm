@@ -27,4 +27,9 @@ class ResponseService
     public static function notFound($data = []) {
         return self::sendJsonResponse(false, 404, [],[]);
     }
+
+    public static function notAuthorize()
+    {
+        return self::sendJsonResponse(false, 401, [],[]);
+    }
 }

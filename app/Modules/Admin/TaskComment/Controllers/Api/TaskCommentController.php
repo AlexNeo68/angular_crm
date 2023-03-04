@@ -14,7 +14,7 @@ use App\Http\Controllers\Controller;
 use App\Services\Responses\ResponseService;
 use Illuminate\Support\Facades\Auth;
 
-class TasksCommentController extends Controller
+class TaskCommentController extends Controller
 {
 
     private  $service;

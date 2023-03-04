@@ -5,8 +5,9 @@ namespace App\Providers;
 use App\Services\Localization\LocalizationService;
 use Route;
 use Illuminate\Support\ServiceProvider;
-
-
+use Laravel\Passport\Http\Controllers\AccessTokenController;
+use Laravel\Passport\Http\Controllers\TransientTokenController;
+use Laravel\Passport\Passport;
 
 class ModularProvider extends ServiceProvider
 {
@@ -48,7 +49,9 @@ class ModularProvider extends ServiceProvider
 
                         Route::prefix('api')
                             ->middleware('api')
-                            ->group(function() use($mod, $sub, $relativePath, $path) {
+                            ->group(function() use($mod, $sub, $relativePath, $path) {  
+                                Route::post('oauth/token', [AccessTokenController::class, 'issueToken'])->name('passport.token');
+                                Route::post('oauth/token/refresh', [TransientTokenController::class, 'refresh'])->name('passport.token.refresh');
                                 $this->getApiRoutes($mod, $sub, $relativePath, $path);
                             });
                     }

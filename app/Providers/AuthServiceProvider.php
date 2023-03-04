@@ -7,6 +7,7 @@ namespace App\Providers;
 use App\Modules\Admin\Analytics\Policies\AnalyticsPolicy;
 use App\Modules\Admin\Lead\Models\Lead;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Laravel\Passport\Passport;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -28,6 +29,8 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Passport::tokensExpireIn(now()->addSeconds(3));
+        Passport::refreshTokensExpireIn(now()->addDays(30));
+        Passport::personalAccessTokensExpireIn(now()->addDays(3));
     }
 }
