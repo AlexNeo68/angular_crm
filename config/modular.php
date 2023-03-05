@@ -19,6 +19,8 @@ return [
             'LeadComment',
             'Lead',
             'Sources',
+            'Unit',
+            'Status',
             'Role',
             'Menu',
             'Dashboard',
