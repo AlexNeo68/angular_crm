@@ -9,6 +9,7 @@ Route::group(['prefix' => 'leads', 'middleware' => []], function () {
     Route::delete('/{lead}', 'Api\LeadController@destroy')->name('api.leads.delete');
 
     Route::get('/archive/index', 'Api\LeadController@archive')->name('api.archive.index');
+    Route::get('/addSale/count', 'Api\LeadController@getAddSaleCount')->name('api.leads.add.sale');
     Route::post('/create/check', 'Api\LeadController@checkExist')->name('api.leads.check');
     Route::put('/update/quality/{lead}', 'Api\LeadController@updateQuality')->name('api.leads.update.quality');
 

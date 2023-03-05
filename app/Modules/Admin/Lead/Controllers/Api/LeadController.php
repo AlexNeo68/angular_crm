@@ -3,6 +3,7 @@
 namespace App\Modules\Admin\Lead\Controllers\Api;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Modules\Admin\Lead\Models\Lead;
@@ -152,4 +153,14 @@ class LeadController extends Controller
         ]);
 
     }
+
+    public function getAddSaleCount() {
+        $count = $this->service->getAddSaleCount();
+        return ResponseService::sendJsonResponse(true, 200, [],[
+            'number' => $count
+        ]);
+
+    }
+
+    
 }

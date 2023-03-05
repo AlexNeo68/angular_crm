@@ -1,6 +1,8 @@
 <?php
 namespace App\Modules\Admin\Lead\Services;
 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use App\Modules\Admin\Lead\Models\Lead;
 use App\Modules\Admin\User\Models\User;
 use App\Modules\Admin\Status\Models\Status;
@@ -141,5 +143,23 @@ class LeadService {
         $lead->save();
 
         return $lead;
+    }
+
+
+    public function getAddSaleCount()
+    {
+        // @var int $count */
+        $count = 0;
+        // @var User $user */
+        $user = Auth::user();
+
+        $count = $user->
+        leads()->
+        where('is_add_sale', '1')->
+        where('isQualityLead', '1')->
+        where(DB::raw('DATE_FORMAT(created_at,"%Y-%m-%d")'), '>', DB::raw('DATE_SUB(CURRENT_DATE, INTERVAL 1 MONTH)'))->
+        count();
+
+        return $count;
     }
 }
