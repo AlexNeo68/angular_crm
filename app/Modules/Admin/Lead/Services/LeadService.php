@@ -9,6 +9,7 @@ use App\Modules\Admin\Status\Models\Status;
 use App\Modules\Admin\LeadComment\Services\LeadCommentService;
 
 class LeadService {
+
     public function getLeads()
     {
         $leads = (new Lead())->getLeads();
@@ -18,9 +19,9 @@ class LeadService {
 
         $statuses->each(function($item, $key) use(&$resultLeads,$leads) {
             $collection = $leads->where('status_id', $item->id);
-            $resultLeads[$item->title] = $collection->map(function($elem) {
+            $resultLeads[$item->title] = array_values($collection->map(function($elem) {
                 return $elem;
-            });
+            })->toArray());
 
         });
 
